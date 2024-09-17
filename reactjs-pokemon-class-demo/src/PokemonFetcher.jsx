@@ -32,8 +32,18 @@ export default class PokemonFetched extends React.Component {
             });
         }
 
-        
+
             console.log("PokemonFetcher first load on the page.");
+        }
+
+        componentDidUpdate() {
+            // If and else to cater to an empty state
+            if (this.state.pokemonList.length > 0) {
+                console.log("Page has rendered! The current state is: " + this.state.pokemonList);
+            } else {
+                console.log("Page has rendered! The current state is empty.");
+            }
+            
         }
 
     render() {
@@ -43,8 +53,8 @@ export default class PokemonFetched extends React.Component {
                 <h1>Pokemon Data</h1>
 
                 {/* Mapping the Pokemon list in the state */}
-                {this.state.pokemonList.map(pokemon => {
-                    return <PokemonCard name={pokemon.name}/>
+                {this.state.pokemonList.map((pokemon, index) => {
+                    return <PokemonCard key={pokemon.name + index} name={pokemon.name}/>
                 })}
 
                 {/* Button with onClick function for updating the state for the list */}
