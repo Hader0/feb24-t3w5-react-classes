@@ -8,6 +8,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+
+      <h1>{process.env.REACT_APP_EXAMPLE_ENV}</h1>
+
         <PokemonFetched />
 
         <header className="App-header">
@@ -24,6 +27,7 @@ class App extends React.Component {
             Learn React
           </a>
         </header>
+
       </div>
     );
   }
